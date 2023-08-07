@@ -5,10 +5,16 @@
 %　Rubio-Ramirez, Waggoner, and Zha (2010) RES, p665-696
 %  p.679  Sec.5.3. Impulse Response 
 
+
+%==============================================
+% Zero Restrictions
+%==============================================
+
 % {'g';'y';'dbt';'pi';'int'}; 
-% 制約条件の設定
-% 短期と長期のインパルス応答の制約 1 --> 1の数は4つ (インパルス応答が0となる制約)
- %　Monetary Policy shock
+
+%　Monetary Policy shock
+% number of zero restriction for short and long runs = 4  
+% --> # of element "1" = 4  
 Q1 =  [ 1 0 0 0 0; ...   % contemporaneous g
         0 0 0 0 0; ...   % y    
         0 1 0 0 0;...     % dbt
@@ -25,8 +31,10 @@ Q1 =  [ 1 0 0 0 0; ...   % contemporaneous g
         0 0 0 0  0; ...  % pi
         0 0 0 0  0  ]' ;     % int% 
   
-% 短期と長期のインパルス応答の制約 2  --> 1の数は3つ
-% 財政政策ショック
+
+% Gov shock
+% number of zero restriction for short and long runs = 3  
+% --> # of element "1" = 3  
 Q2 = [0 0 0 0 0 ; ...   % contemporaneous g
       0 0 0 0 0 ; ...   % y
       0 0 0 0 0 ;...     % dbt
@@ -43,8 +51,10 @@ Q2 = [0 0 0 0 0 ; ...   % contemporaneous g
       0 0 0 0 0; ...  % pi
       0 0 0 0 0   ]' ;     % int
 
- % 短期と長期のインパルス応答の制約 3 --> 1の数は2つ
- % Demand ショック 
+ 
+ % Demand shock 
+% number of zero restriction for short and long runs = 2  
+% --> # of element "1" = 2  
 Q3 =[0 0 0 0 0 ; ...   % contemporaneous g
           0 0 0 0 0 ; ...   % y
           0 0 0 0 0 ;...     % dbt
@@ -60,8 +70,10 @@ Q3 =[0 0 0 0 0 ; ...   % contemporaneous g
           0 0 0 0  0;...     % dbt
          0 0 0 0 0; ...  % pi
          0 0 0 0  0  ]' ;     % int
-  % 短期と長期のインパルス応答の制約 4 --> 1の数は1つ
-  % Supply shock
+
+   % Supply shock
+   % number of zero restriction for short and long runs = 1  
+% --> # of element "1" = 1 
 Q4 = [0 0 0 0 0 ; ...   % contemporaneous g
           0 0 0 0 0 ; ...   % y
           0 0 0 0 0 ;...     % dbt
@@ -87,7 +99,7 @@ Q(:,:,4) = Q4;
 
 
 %---------------------------
-%  符号制約 
+%  Sign Restrictions 
 %---------------------------
   % MP shock
  S1 =[0 0 0 0 0 ; ...   % contemporaneous g
@@ -106,7 +118,7 @@ Q(:,:,4) = Q4;
        0 0 0  0 0; ...  % pi
        0 0 0  0 0  ]' ;     % int
 
-% 財政政策(政府ショック)ショックを起こす
+% Government policy shock
 % Gov >0 and GDP>0
 S2 = [1 0 0 0 0 ; ...   % contemporaneous g
       0 0 0 0 0 ; ...   % y
@@ -124,7 +136,7 @@ S2 = [1 0 0 0 0 ; ...   % contemporaneous g
       0 0 0 0 0 ; ...  % pi
       0 0 0 0 0  ]' ;     % int
 
-  % Demand shock を起こす
+  % Demand shock 
   % r >0 & Pi < 0 & Y<0
 S3 = [0 0 0 0 0 ; ...   % contemporaneous g
           1 0 0 0 0 ; ...   % y
@@ -141,7 +153,8 @@ S3 = [0 0 0 0 0 ; ...   % contemporaneous g
       0 0 0 0 0;...     % dbt
       0 0 0  0 0; ...  % pi
       0 0 0  0 0  ]' ;     % int 
-  % Supplyショックを起こす 
+
+  % Supply shock 
 S4 = [0 0 0 0 0 ; ...   % contemporaneous g
           0 0 0 0 0 ; ...   % y
           0 0 0 0 0 ;...     % dbt
