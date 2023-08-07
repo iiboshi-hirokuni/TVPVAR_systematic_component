@@ -22,7 +22,7 @@ global method_type policy_type svar_type;
 
 addpath('./data')
 addpath('./function')
-addpath('./function_zero_sign')
+addpath('./function_sign')
 addpath('./output')
 
 % my=xlsread('./data/data_7vars_qdt','sheet1','B2:H266');
